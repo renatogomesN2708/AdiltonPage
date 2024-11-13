@@ -34,6 +34,8 @@
     <input type="text" id="jantar" placeholder="Informe o horário e o que costuma comer no jantar" required><br>
     <p>Antes de dormir, o que você come com mais frequência atualmente.</p>
     <input type="text" id="ceia" placeholder="O que você costuma comer antes de dormir?" required><br>
+    <p>Que horas você costuma treinar?</p>
+    <input type="text" id="horarioTreino" placeholder="Informe o horário em que costuma treinar" required><br>
     <p>O que você costuma comer ou suplementar antes de ir treinar atualmente.</p>
     <input type="text" id="preTreino" placeholder="O que você costuma comer ou suplementar antes do treino?" required><br>
     <p>Você toma algum suplemento, qual horário.</p>
@@ -59,18 +61,34 @@
 
       // Campos que você quer capturar
       const campos = [
-        "nome", "idade", "horarioAcorda", "cafedaManha", "lancheManha",
-        "horarioAlmoco", "almoco", "lancheTarde", "jantar", "ceia", "preTreino", "horarioSuplemento", "resultadoSuplemento",
-        "restricaoAlimentar", "balanca", "dificuldadeTreino", "restricaoExercicio", "msg"
+        { id: "nome", label: "Nome" },
+        { id: "idade", label: "Idade" },
+        { id: "horarioAcorda", label: "Que horas você acorda" },
+        { id: "cafedaManha", label: "No café da manhã o que você come nessa refeição" },
+        { id: "lancheManha", label: "O que você lancha na manhã entre o café e o almoço" },
+        { id: "horarioAlmoco", label: "Você almoça que horas" },
+        { id: "almoco", label: "O que você come no almoço com mais frequência e a proteína mais ou menos a quantidade" },
+        { id: "lancheTarde", label: "O que você come no lanche da tarde" },
+        { id: "jantar", label: "No jantar, que horas você come e o que você come" },
+        { id: "ceia", label: "Antes de dormir o que você come com mais frequência atualmente" },
+        { id: "horarioTreino", label: "Que horas você costuma treinar?" },
+        { id: "preTreino", label: "O que você costuma comer ou suplementar antes de ir treinar atualmente" },
+        { id: "horarioSuplemento", label: "Você toma algum suplemento, qual horário" },
+        { id: "resultadoSuplemento", label: "Caso já tenha tomado algum suplemento, me informe qual foi o suplemento e quais foram os resultados" },
+        { id: "restricaoAlimentar", label: "Tem restrição a algum alimento? Se sim, qual" },
+        { id: "balanca", label: "Você possui balança para pesar a comida?" },
+        { id: "dificuldadeTreino", label: "Qual o horário do seu treino, juntamente com a frequência que você treina?" },
+        { id: "restricaoExercicio", label: "Você possui alguma restrição a algum exercício?" },
+        { id: "msg", label: "Observações" }
       ];
 
       // Construção do texto da mensagem
       let mensagem = "Formulário de Apresentação\n\n";
-      campos.forEach(id => {
-        let valor = encodeURIComponent(document.getElementById(id).value);
+
+      campos.forEach(campo => {
+        const valor = encodeURIComponent(document.getElementById(campo.id).value);
         if (valor) {
-          let label = document.querySelector(`label[for=${id}]`) ? document.querySelector(`label[for=${id}]`).innerText : id;
-          mensagem += `${label}: ${valor}\n`;
+          mensagem += `${campo.label}:\n${valor}\n\n`;
         }
       });
 
