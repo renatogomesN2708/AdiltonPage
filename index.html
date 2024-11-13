@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Adilton Formulário de Apresentação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Formulário de Apresentação</h1><br>
+
+  <form id="form" action="#" method="get" onsubmit="abrirWhatsapp(event)">
+    <p>Nome.</p>
+    <input type="text" id="nome" placeholder="Digite seu nome" required><br>
+    <p>Idade.</p>
+    <input type="text" id="idade" placeholder="Digite sua idade" required><br>
+    <p>Que horas você acorda.</p>
+    <input type="text" id="horarioAcorda" placeholder="Informe o horário em que você acorda" required><br>
+    <p>No café da manhã, o que você come nessa refeição.</p>
+    <input type="text" id="cafedaManha" placeholder="O que costuma comer no café da manhã?" required><br>
+    <p>O que você lancha na manhã entre o café e o almoço.</p>
+    <input type="text" id="lancheManha" placeholder="O que você costuma lanchar entre o café e o almoço?" required><br>
+    <p>Você almoça que horas.</p>
+    <input type="text" id="horarioAlmoco" placeholder="Informe o horário do seu almoço" required><br>
+    <p>O que você come no almoço com mais frequência e a proteína mais ou menos a quantidade.</p>
+    <input type="text" id="almoco" placeholder="O que você costuma comer no almoço?" required><br>
+    <p>O que você come no lanche da tarde.</p>
+    <input type="text" id="lancheTarde" placeholder="O que você costuma comer no lanche da tarde?" required><br>
+    <p>No jantar, que horas você come e o que você come.</p>
+    <input type="text" id="jantar" placeholder="Informe o horário e o que costuma comer no jantar" required><br>
+    <p>Antes de dormir, o que você come com mais frequência atualmente.</p>
+    <input type="text" id="ceia" placeholder="O que você costuma comer antes de dormir?" required><br>
+    <p>O que você costuma comer ou suplementar antes de ir treinar atualmente.</p>
+    <input type="text" id="preTreino" placeholder="O que você costuma comer ou suplementar antes do treino?" required><br>
+    <p>Você toma algum suplemento, qual horário.</p>
+    <input type="text" id="horarioSuplemento" placeholder="Informe o horário e o suplemento que toma" required><br>
+    <p>Caso já tenha tomado algum suplemento, me informe qual foi o suplemento e quais foram os resultados.</p>
+    <input type="text" id="resultadoSuplemento" placeholder="Informe o suplemento e seus resultados" required><br>
+    <p>Tem restrição a algum alimento? Se sim, qual.</p>
+    <input type="text" id="restricaoAlimentar" placeholder="Informe suas restrições alimentares, se houver" required><br>
+    <p>Você possui balança para pesar a comida?</p>
+    <input type="text" id="balanca" placeholder="Você possui balança para pesar os alimentos?" required><br>
+    <p>Qual o horário do seu treino, juntamente com a frequência que você treina?</p>
+    <input type="text" id="dificuldadeTreino" placeholder="Informe o horário e a frequência dos seus treinos" required><br>
+    <p>Você possui alguma restrição a algum exercício?</p>
+    <input type="text" id="restricaoExercicio" placeholder="Informe se possui alguma restrição a exercícios" required><br>
+    <p>Use o espaço abaixo para fazer algumas observações, caso queira.</p>
+    <textarea id="msg" placeholder="Escreva suas observações ou dúvidas aqui" cols="30" rows="5" required></textarea><br>
+    <button type="submit"><img src="whatsapp.svg" alt="Ícone WhatsApp"><span>Enviar dados p/ WhatsApp</span></button>
+  </form>
+
+  <script>
+    function abrirWhatsapp(event) {
+      event.preventDefault();
+
+      // Campos que você quer capturar
+      const campos = [
+        "nome", "idade", "horarioAcorda", "cafedaManha", "lancheManha",
+        "horarioAlmoco", "almoco", "lancheTarde", "jantar", "ceia", "preTreino", "horarioSuplemento", "resultadoSuplemento",
+        "restricaoAlimentar", "balanca", "dificuldadeTreino", "restricaoExercicio", "msg"
+      ];
+
+      // Construção do texto da mensagem
+      let mensagem = "Formulário de Apresentação\n\n";
+      campos.forEach(id => {
+        let valor = encodeURIComponent(document.getElementById(id).value);
+        if (valor) {
+          let label = document.querySelector(`label[for=${id}]`) ? document.querySelector(`label[for=${id}]`).innerText : id;
+          mensagem += `${label}: ${valor}\n`;
+        }
+      });
+
+      // URL do WhatsApp com a mensagem
+      const url = `https://wa.me/5585994041532?text=${mensagem}`;
+
+      // Redirecionar para o WhatsApp
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+
+</html>
