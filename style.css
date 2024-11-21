@@ -8,44 +8,65 @@
 }
 
 body {
+  background: url('./img/adt.jpg') no-repeat center center;
+  background-size: cover; /* A imagem vai cobrir toda a tela */
   display: grid;
   place-content: center;
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  height: 100%;
+  margin: 0;
   background-color: #0d1117;
   color: #ffffff;
+  background-attachment: scroll; /* A imagem rola com a página */
+  background-position: center; /* A imagem será centralizada */
 }
 
-h1,
-p,
-a {
+form {
+  display: grid;
+  justify-items: center;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0); /* Remover fundo escuro */
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 20pt;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-align: center;
+}
+
+h2, p, a {
   text-align: center;
 }
 
 p {
-  font-size: 14px;
-  margin-top: 16px;
-  margin-bottom: 24px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  color: #ffffff;
 }
 
-input,
-textarea,
-button {
+input {
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: black;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+textarea {
   width: 100%;
   margin-bottom: 16px;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 16px;
-}
-
-input,
-textarea {
-  padding: 16px;
-}
-
-input,
-button {
-  height: 40px;
+  padding: 12px;
 }
 
 button {
@@ -53,12 +74,165 @@ button {
   background-color: #25d366;
   color: #ffffff;
   display: flex;
+  width: 100%;
+  border-radius: 25px;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  height: 48px;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 button img {
   margin-right: 8px;
+}
+
+label {
+  color: #25d366;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+/* Responsividade com Media Queries */
+
+/* Para iPhone 5 (320px) e dispositivos menores */
+@media (max-width: 320px) {
+  body {
+    padding: 5px;
+    background-size: 100% 100%; /* Ajusta a imagem para 100% da largura e altura */
+    background-position: center center;
+  }
+
+  h2 {
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  input, textarea, button {
+    width: 100%; /* Campos ocupando 100% da tela */
+  }
+
+  button {
+    height: 40px;
+  }
+
+  form {
+    padding: 10px;
+  }
+}
+
+/* Para iPhone 6/7/8 (375px) */
+@media (max-width: 375px) {
+  body {
+    padding: 10px;
+    background-size: 100% 100%; /* Ajusta a imagem para 100% da largura e altura */
+    background-position: center center;
+  }
+
+  h2 {
+    font-size: 16pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  input, textarea, button {
+    width: 100%;
+  }
+
+  button {
+    height: 50px;
+  }
+
+  form {
+    padding: 15px;
+  }
+}
+
+/* Para telas de 390px (iPhone 12) */
+@media (max-width: 390px) {
+  body {
+    padding: 10px;
+    background-size: 100% 100%;
+    background-position: center center;
+  }
+
+  h2 {
+    font-size: 18pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  input, textarea, button {
+    width: 100%;
+  }
+
+  button {
+    height: 50px;
+  }
+
+  form {
+    padding: 15px;
+  }
+}
+
+/* Para telas médias (tablets) */
+@media (max-width: 1024px) {
+  body {
+    background-size: 100% 100%;
+  }
+
+  h2 {
+    font-size: 18pt;
+  }
+
+  input, textarea, button {
+    width: 90%;
+  }
+
+  button {
+    height: 45px;
+  }
+
+  form {
+    padding: 20px;
+    width: 80%;
+  }
+}
+
+/* Para telas grandes (desktop) */
+@media (min-width: 1025px) {
+  body {
+    background-size: cover;
+  }
+
+  h2 {
+    font-size: 24pt;
+  }
+
+  button {
+    width: 60%;
+    height: 48px;
+  }
+
+  form {
+    width: 60%;
+    margin: 0 auto;
+    padding: 40px;
+  }
 }
